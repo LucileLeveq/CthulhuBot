@@ -59,11 +59,11 @@ public class Bot implements EventListener {
         for (TextChannel c : chan){
         	//System.out.println("Channel - Name:"+c.getName()+" ID:"+c.getId()); //Affiche tous les salons où il est présent (nom + ID)
         	
-        	/*if (c.getName().equals("general")) //Message de salutation sur general
+        	if (c.getName().equals("general")) //Message de salutation sur general
         		c.sendMessage("Salut tout le monde ! Cthulhu est dans la place ! \n"
         				+ "Pour expérimenter mon option livre d'or, tapez \"!helplivredor\" \n"
         				+ "Pour me faire taire, tapez \"Silence Cthulhu\"\n"
-        				+ "Pour plus d'info tapez \"!info\"").queue();*/
+        				+ "Pour plus d'info tapez \"!info\"").queue();
         }
         
         while (!stop) { //Tant qu'on ne le stoppe pas
