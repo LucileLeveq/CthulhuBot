@@ -19,36 +19,36 @@ import java.util.regex.Pattern;
 public class Bot implements EventListener {
 
 	private JDA jda;
-    private boolean stop = false; 
+	private boolean stop = false; 
     
     //Pour stopper le bot si besoin
 	@Override
 	public void onEvent(Event event) {
 		if (event instanceof MessageReceivedEvent) {
-            MessageReceivedEvent e = (MessageReceivedEvent) event;
-            String message = e.getMessage().getContent();
-            Pattern stopit = Pattern.compile("!stop");
-            Matcher m = stopit.matcher(message);
-            if (m.find()){ //Si le message contient "!stop"
-            	jda.shutdown(true); //On arrête le bot
-                stop = true;
-            }
+			MessageReceivedEvent e = (MessageReceivedEvent) event;
+			String message = e.getMessage().getContent();
+			Pattern stopit = Pattern.compile("!stop");
+			Matcher m = stopit.matcher(message);
+			if (m.find()){ //Si le message contient "!stop"
+				jda.shutdown(true); //On arrête le bot
+				stop = true;
+			}
 		}
 	}
     
 	//Paramètre et lance le bot
     public Bot (String token) {
         try {
-			jda = new JDABuilder(AccountType.BOT).setToken(token) //Token passé en paramètre dans le main
+        	jda = new JDABuilder(AccountType.BOT).setToken(token) //Token passé en paramètre dans le main
 					.setBulkDeleteSplittingEnabled(false).buildBlocking();
-			jda.addEventListener(this); //Ajout du listener de stop
-			jda.addEventListener(new MainListener()); //Ajout du listener débile x)
-			jda.addEventListener(new PoliteListener()); //Ajout du listener de politesse
-			jda.addEventListener(new LivredorListener()); //Ajout des fonctions livre d'or
-        } catch (IllegalArgumentException |LoginException | InterruptedException | RateLimitedException e) {
-            e.printStackTrace();
-            System.out.println("Une erreur est survenue ; veuillez vérifier le token ou votre connection internet.");
-            return;
+        	jda.addEventListener(this); //Ajout du listener de stop
+        	jda.addEventListener(new MainListener()); //Ajout du listener débile x)
+        	jda.addEventListener(new PoliteListener()); //Ajout du listener de politesse
+        	jda.addEventListener(new LivredorListener()); //Ajout des fonctions livre d'or
+        } catch (IllegalArgumentException | LoginException | InterruptedException | RateLimitedException e) {
+        	e.printStackTrace();
+        	System.out.println("Une erreur est survenue ; veuillez vérifier le token ou votre connection internet.");
+        	return;
         }
         
     	int i; //Nombre de channels sur lequel le bot est actif
