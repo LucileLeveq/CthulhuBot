@@ -36,7 +36,7 @@ public class MainListener implements EventListener {
             	
             	
             	// Liste des mots à matcher
-	            Pattern ping = Pattern.compile("[Pp][Ii][Nn][Gg][ ,.].*|[Pp][Ii][Nn][Gg]$");
+	            Pattern ping = Pattern.compile("^[Pp][Ii][Nn][Gg][ ,.].*|^[Pp][Ii][Nn][Gg]$| [Pp][Ii][Nn][Gg][ ,.].*| [Pp][Ii][Nn][Gg]$");
 	            Pattern jeu = Pattern.compile(" [Jj][Ee][Uu][Xx]?[ .?!]| [Jj][Ee][Uu][Xx]?[.!?]?$|^[Jj][Ee][Uu][Xx]?[ .?!]|^[Jj][Ee][Uu][Xx]?[.?!]?$|[Gg][Aa][Mm][Ee][Ss]? |[Gg][Aa][Mm][Ee][Ss]?$|[Pp][Ee][Rr][Dd][UuRrSs]?");
 	            Pattern allemand = Pattern.compile("^[Dd]ie | [Dd]ie |[Kk]artoffeln?|schön| [Dd]er |^[dD]er | [Dd]as |^[dD]as |danke|guten?|nacht| ich |^[iI]ch | bin | ein |^[Ee]in ");
 	            Pattern degueu = Pattern.compile("[Dd][Eeé][Gg][uU][Ee][Uu]");
