@@ -22,8 +22,8 @@ import net.dv8tion.jda.core.hooks.EventListener;
 
 public class MainListener implements EventListener {
 	
-	static int compteMsgBn;
-	static final int latenceBn = 15;
+	static int compteMsgBn = 0;
+	static final int latenceBn = 20;
 
 	@Override
 	public void onEvent(Event event) {
@@ -43,9 +43,8 @@ public class MainListener implements EventListener {
             	}
             	
             	
-            	
             	// Liste des mots à matcher
-	            Pattern ping = Pattern.compile("[Pp][Ii][Nn][Gg]");
+	            Pattern ping = Pattern.compile("[Pp][Ii][Nn][Gg][ ,.].*|[Pp][Ii][Nn][Gg]$");
 	            Pattern jeu = Pattern.compile(" [Jj][Ee][Uu][Xx]?[ .?!]| [Jj][Ee][Uu][Xx]?[.!?]?$|^[Jj][Ee][Uu][Xx]?[ .?!]|^[Jj][Ee][Uu][Xx]?[.?!]?$|[Gg][Aa][Mm][Ee][Ss]? |[Gg][Aa][Mm][Ee][Ss]?$|[Pp][Ee][Rr][Dd][UuRrSs]?");
 	            Pattern allemand = Pattern.compile("^[Dd]ie | [Dd]ie |[Kk]artoffeln?|schön| [Dd]er |^[dD]er | [Dd]as |^[dD]as |danke|guten?|nacht| ich |^[iI]ch | bin | ein |^[Ee]in ");
 	            Pattern degueu = Pattern.compile("[Dd][Eeé][Gg][uU][Ee][Uu]");
@@ -54,7 +53,6 @@ public class MainListener implements EventListener {
 	            Pattern info = Pattern.compile("!info");
 	            Pattern nuit = Pattern.compile("[Bb]onne nuit");
 
-	            
 	            
 	            // Réactions en fonction du match
 	            Matcher m = ping.matcher(message);
