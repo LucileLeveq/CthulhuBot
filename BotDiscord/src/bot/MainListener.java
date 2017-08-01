@@ -17,14 +17,10 @@ import net.dv8tion.jda.core.hooks.EventListener;
  * Répondre aléatoirement "Toi-même, 'spèce de ..." 1 fois sur 50 où le "..." est le dernier mot de plus de 3
  * caractètres de la phrase (en excluant les mots en -er, -ez et -ir)
  * Répondre "Qu'est-ce que t'as pas compris ?" si "C'est pas faux"
- * Répondre à un "Bonne nuit"
  * */
 
 public class MainListener implements EventListener {
 	
-	static int compteMsgBn = 0;
-	static final int latenceBn = 20;
-
 	@Override
 	public void onEvent(Event event) {
 		if (event instanceof MessageReceivedEvent) {
@@ -37,10 +33,6 @@ public class MainListener implements EventListener {
             	
             	Random r = new Random();
             	int random = r.nextInt(50);
-
-            	if (compteMsgBn < latenceBn) {
-                	compteMsgBn ++; //Nb de messages depuis le dernier "bonne nuit"
-            	}
             	
             	
             	// Liste des mots à matcher
@@ -51,7 +43,6 @@ public class MainListener implements EventListener {
 	            Pattern toimeme = Pattern.compile("^.* ([A-Za-zéêèôîïëüö]{4,}).*$");
 	            Pattern pasfaux = Pattern.compile("[Cc]'est pas faux");
 	            Pattern info = Pattern.compile("!info");
-	            Pattern nuit = Pattern.compile("[Bb]onne nuit");
 
 	            
 	            // Réactions en fonction du match
@@ -136,18 +127,6 @@ public class MainListener implements EventListener {
 	            m = pasfaux.matcher(message);
 	            if (m.find()) {
 	            	e.getChannel().sendMessage("Qu'est-ce que t'as pas compris ?").queue();
-	            }
-	            
-	            m = nuit.matcher(message);
-	            if (m.find()) {
-	            	if (compteMsgBn > latenceBn){ //On regarde si on n'a pas réagi il y a peu
-	      	            compteMsgBn = 0;
-	            		if (author.getName().equals("AmyW")){
-		            		e.getChannel().sendMessage("Bonne nuit reine des marmottes !");
-		            	} else {
-			            	e.getChannel().sendMessage("Bonne nuit "+author.getName());
-		            	}
-	            	}
 	            }
 	            
 	            m = info.matcher(message);

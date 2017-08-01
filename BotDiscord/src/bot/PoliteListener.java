@@ -13,9 +13,13 @@ import net.dv8tion.jda.core.hooks.EventListener;
  * Détecter les mots grossiers et répondre un truc marrant en conséquence
  * Répondre quand on parle de lui, répond à un merci
  * Se tait 15 minutes
+ * Répondre à un "Bonne nuit"
  * */
 public class PoliteListener implements EventListener {
 
+	static int compteMsgBn = 0;
+	static final int latenceBn = 20;
+	
 	@Override
 	public void onEvent(Event event) {
 		if (event instanceof MessageReceivedEvent) {
@@ -27,6 +31,10 @@ public class PoliteListener implements EventListener {
             if (!bot){ //On ne répond que si c'est pas un bot
             	Random r = new Random();
             	
+            	if (compteMsgBn < latenceBn) {
+                	compteMsgBn ++; //Nb de messages depuis le dernier "bonne nuit"
+            	}
+            	
             	// Liste des mots à matcher
 	            Pattern merde = Pattern.compile("[Mm][Ee][Rr][Dd][Ee]"); 
 	            Pattern con = Pattern.compile(" [Cc]on[s.,]* | [Cc]on[s.!?]*$"); 
@@ -35,6 +43,7 @@ public class PoliteListener implements EventListener {
 	            Pattern merci = Pattern.compile("[mM]erci [Cc]thulhu");
 	            Pattern silence = Pattern.compile("[Ss]ilence [Cc]thulhu");
 	            Pattern tagueule = Pattern.compile("[Tt]a gueule [Cc]thulhu");
+	            Pattern nuit = Pattern.compile("[Bb]onne nuit");
 
 	            // Réactions en fonction du match
 	            Matcher m = merde.matcher(message);
@@ -77,10 +86,21 @@ public class PoliteListener implements EventListener {
 	                e.getChannel().sendMessage("C'est pas très gentil. On dit \""+randomMotChatie+"\".").queue();
 	            }
 	            
+	            m = nuit.matcher(message);
+	            if (m.find()) {
+	            	System.out.println("Détection d'un bonne nuit, compteMsgBn="+compteMsgBn+" latenceBn="+latenceBn);
+	            	if (compteMsgBn > latenceBn){ //On regarde si on n'a pas réagi il y a peu
+	      	            compteMsgBn = 0;
+	            		if (author.getName().equals("AmyW")){
+		            		e.getChannel().sendMessage("Bonne nuit reine des marmottes !");
+		            	} else {
+			            	e.getChannel().sendMessage("Bonne nuit "+author.getName());
+		            	}
+	            	}
+	            }
 	            
 	            m = cthulhu.matcher(message);
 	            if (m.find( )) {
-	            	
 	            	m = merci.matcher(message);
 		            if (m.find()) {
 		            	String randomAnswer;
