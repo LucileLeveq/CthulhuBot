@@ -17,6 +17,7 @@ import net.dv8tion.jda.core.hooks.EventListener;
  * Répondre aléatoirement "Toi-même, 'spèce de ..." 1 fois sur 50 où le "..." est le dernier mot de plus de 3
  * caractètres de la phrase (en excluant les mots en -er, -ez et -ir)
  * Répondre "Qu'est-ce que t'as pas compris ?" si "C'est pas faux"
+ * Message d'accueil si !help
  * */
 
 public class MainListener implements EventListener {
@@ -43,6 +44,7 @@ public class MainListener implements EventListener {
 	            Pattern toimeme = Pattern.compile("^.* ([A-Za-zéêèôîïëüö]{4,}).*$");
 	            Pattern pasfaux = Pattern.compile("[Cc]'est pas faux");
 	            Pattern info = Pattern.compile("!info");
+	            Pattern help = Pattern.compile("!help");
 
 	            
 	            // Réactions en fonction du match
@@ -144,6 +146,14 @@ public class MainListener implements EventListener {
 	            			+ "Se tait 15 minutes lors d'un \"Silence Cthulhu\"\n"
 	            			+ "Se vexe 15 minutes lors d'un \"Ta gueule Cthulhu\"\n"
 	            			+ "Fonctionnalité livre d'or (tapez \"!helplivredor\" pour plus d'informations)").queue();
+	            }
+	            
+	            m = help.matcher(message);
+	            if (m.find()) {
+	            	e.getChannel().sendMessage("Salut tout le monde ! Cthulhu est dans la place ! \n"
+	        				+ "Pour expérimenter mon option livre d'or, tapez \"!helplivredor\" \n"
+	        				+ "Pour me faire taire, tapez \"Silence Cthulhu\"\n"
+	        				+ "Pour plus d'info tapez \"!info\"").queue();
 	            }
             }   
         }

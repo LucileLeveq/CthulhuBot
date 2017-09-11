@@ -55,7 +55,7 @@ public class PoliteListener implements EventListener {
 		            		randomMotChatie = "sacrebleu";
 		            		break;
 		            	case 1 : 
-		            		randomMotChatie = "flûte";
+		            		randomMotChatie = "saperlipopette";
 		            		break;
 		            	case 2 :
 		            		randomMotChatie = "cornegidouille";
