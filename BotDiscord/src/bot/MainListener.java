@@ -142,6 +142,7 @@ public class MainListener implements EventListener {
 	            			+ "Répondre à \"C'est pas faux\"\n"
 	            			+ "Détecter les mots grossiers \"con\", \"fuck\" et \"merde\"\n"
 	            			+ "Répondre quand on parle de lui, répond à un merci qui lui est adressé\n"
+	            			+ "Répond si on inverse le T et le H en début de Cthulhu"
 	            			+ "Répondre à un \"bonne nuit\"\n"
 	            			+ "Se tait 15 minutes lors d'un \"Silence Cthulhu\"\n"
 	            			+ "Se vexe 15 minutes lors d'un \"Ta gueule Cthulhu\"\n"
