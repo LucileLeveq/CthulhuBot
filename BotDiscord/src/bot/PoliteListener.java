@@ -94,9 +94,9 @@ public class PoliteListener implements EventListener {
 	            	if (compteMsgBn > latenceBn){ //On regarde si on n'a pas réagi il y a peu
 	      	            compteMsgBn = 0;
 	            		if (author.getName().equals("AmyW")){
-		            		e.getChannel().sendMessage("Bonne nuit reine des marmottes !");
+		            		e.getChannel().sendMessage("Bonne nuit reine des marmottes !").queue();;
 		            	} else {
-			            	e.getChannel().sendMessage("Bonne nuit "+author.getName());
+			            	e.getChannel().sendMessage("Bonne nuit "+author.getName()).queue();;
 		            	}
 	            	}
 	            }
