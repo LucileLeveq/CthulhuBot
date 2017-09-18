@@ -12,6 +12,8 @@ import net.dv8tion.jda.core.hooks.EventListener;
  * Envoyer la vidéo de Bohort au mot "mécréant"
  * */
 
+//TODO : https://github.com/sedmelluq/lavaplayer se servir de ça pour avoir juste l'audio
+
 public class KaamelottListener implements EventListener {
 	
 	@Override

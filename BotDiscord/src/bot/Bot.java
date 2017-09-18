@@ -30,7 +30,7 @@ public class Bot implements EventListener {
 			Pattern stopit = Pattern.compile("!stop");
 			Matcher m = stopit.matcher(message);
 			if (m.find()){ //Si le message contient "!stop"
-				jda.shutdown(true); //On arrête le bot
+				jda.shutdown(); //On arrête le bot
 				stop = true;
 			}
 		}
@@ -39,8 +39,9 @@ public class Bot implements EventListener {
 	//Paramètre et lance le bot
     public Bot (String token) {
         try {
-        	jda = new JDABuilder(AccountType.BOT).setToken(token) //Token passé en paramètre dans le main
-					.setBulkDeleteSplittingEnabled(false).buildBlocking();
+        	
+        	jda = (JDA) new JDABuilder(AccountType.BOT).setToken(token) //Token passé en paramètre dans le main
+				.setBulkDeleteSplittingEnabled(false).buildBlocking();
         	jda.addEventListener(this); //Ajout du listener de stop
         	jda.addEventListener(new MainListener()); //Ajout du listener débile x)
         	jda.addEventListener(new PoliteListener()); //Ajout du listener de politesse
@@ -71,7 +72,7 @@ public class Bot implements EventListener {
             Scanner scanner = new Scanner(System.in); //Scanne la console
             String cmd = scanner.next(); //Retranscrit en string
             if (cmd.equalsIgnoreCase("stop")) { //Si = stop
-                jda.shutdown(true); //On arrête le bot
+                jda.shutdown(); //On arrête le bot
                 stop = true;
             }
             scanner.close(); //On ferme le scan
