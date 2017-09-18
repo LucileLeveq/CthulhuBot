@@ -30,7 +30,7 @@ public class KaamelottListener implements EventListener {
 	            // Réactions en fonction du match
 	            Matcher m = mecreant.matcher(message);
 	            if (m.find( )) {
-	            	e.getChannel().sendMessage("https://www.youtube.com/watch?v=5pV0hy91ZLY").queue();
+	            	e.getChannel().sendMessage("https://www.youtube.com/watch?v=RNYOhWOPHS8").queue();
 	            }
             }
 		}
