@@ -10,7 +10,9 @@ Un bot Discord nommé Cthulhu. Utilise la JDA-3.0.BETA_75 (with dependencies).
 * Répondre à "C'est pas faux"
 * Détecter les mots grossiers "con", "fuck" et "merde"
 * Répondre quand on parle de lui, répond à un merci qui lui est adressé
+* Corrige les gens quand on inverse le premier T et H de son prénom
 * Répondre à un "bonne nuit"
+* Répond à "mécréant"
 * Se tait 15 minutes lors d'un "Silence Cthulhu"
 * Se vexe 15 minutes lors d'un "Ta gueule Cthulhu"
 * Taper "!livredor" pour obtenir une citation au hasard
