@@ -44,7 +44,8 @@ public class Bot implements EventListener {
         	jda.addEventListener(this); //Ajout du listener de stop
         	jda.addEventListener(new MainListener()); //Ajout du listener débile x)
         	jda.addEventListener(new PoliteListener()); //Ajout du listener de politesse
-        	jda.addEventListener(new LivredorListener()); //Ajout des fonctions livre d'or
+        	jda.addEventListener(new LivredorListener()); //Ajout du listener livre d'or
+        	jda.addEventListener(new KaamelottListener()); //Ajout du listener Kaamelott
         } catch (IllegalArgumentException | LoginException | InterruptedException | RateLimitedException e) {
         	e.printStackTrace();
         	System.out.println("Une erreur est survenue ; veuillez vérifier le token ou votre connection internet.");
