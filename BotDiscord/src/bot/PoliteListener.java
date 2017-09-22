@@ -42,6 +42,7 @@ public class PoliteListener implements EventListener {
 	            Pattern cthulhu = Pattern.compile("[Cc]thulhu");
 	            Pattern mauvaisCthulhu = Pattern.compile("[Cc]htulhu");
 	            Pattern fucking = Pattern.compile("[Ff][Uu][Cc][Kk]");
+	            Pattern tanche = Pattern.compile(" [tT]anche[s.,!?]* | [tT]anche[s.,!?]*$|^[tT]anche[s.,?!]* ");
 	            Pattern merci = Pattern.compile("[mM]erci [Cc]thulhu");
 	            Pattern silence = Pattern.compile("[Ss]ilence [Cc]thulhu");
 	            Pattern tagueule = Pattern.compile("[Tt]a gueule [Cc]thulhu");
@@ -74,7 +75,7 @@ public class PoliteListener implements EventListener {
 	            	int random = r.nextInt(3);
 	            	switch (random) {
 		            	case 0 :
-		            		randomMotChatie = "soutien de Valls";
+		            		randomMotChatie = "admirateur de Trump";
 		            		break;
 		            	case 1 : 
 		            		randomMotChatie = "supporter de football";

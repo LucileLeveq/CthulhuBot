@@ -10,6 +10,7 @@ import net.dv8tion.jda.core.hooks.EventListener;
 
 /* Fonctionnalités :
  * Envoyer la vidéo de Bohort au mot "mécréant"
+ * Répondre "Qu'est-ce que t'as pas compris ?" si "C'est pas faux"
  * */
 
 //TODO : https://github.com/sedmelluq/lavaplayer se servir de ça pour avoir juste l'audio

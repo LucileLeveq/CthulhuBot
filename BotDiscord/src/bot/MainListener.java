@@ -16,8 +16,9 @@ import net.dv8tion.jda.core.hooks.EventListener;
  * Répondre "C'est toujours meilleur qu'une pizza à l'ananas." quand on capte "dégueulasse"
  * Répondre aléatoirement "Toi-même, 'spèce de ..." 1 fois sur 50 où le "..." est le dernier mot de plus de 3
  * caractètres de la phrase (en excluant les mots en -er, -ez et -ir)
- * Répondre "Qu'est-ce que t'as pas compris ?" si "C'est pas faux"
+ * Répondre à "Humain"
  * Message d'accueil si !help
+ * Liste des actions si !info
  * */
 
 public class MainListener implements EventListener {
@@ -44,12 +45,19 @@ public class MainListener implements EventListener {
 	            Pattern toimeme = Pattern.compile("^.* ([A-Za-zéêèôîïëüö]{4,}).*$");
 	            Pattern info = Pattern.compile("!info");
 	            Pattern help = Pattern.compile("!help");
+	            Pattern humain = Pattern.compile("([Hh]umain)");
 
 	            
 	            // Réactions en fonction du match
 	            Matcher m = ping.matcher(message);
 	            if (m.find( )) {
 	                e.getChannel().sendMessage("Pong !").queue();
+	            }
+	            
+	            m = humain.matcher(message);
+	            if (m.find()) {
+	            	String hum = m.group(1);
+	            	e.getChannel().sendMessage("\""+hum+"\" ? Ah oui, cette race de créatures qui fait partie de mes esclaves !").queue();
 	            }
 	            
 	            if (random == 0){ // Une fois sur 50 on balance une connerie.
@@ -134,13 +142,14 @@ public class MainListener implements EventListener {
 	            			+ "Répondre à \"dégueulasse\"\n"
 	            			+ "Répondre aléatoirement \"Toi-même, 'spèce de ...\" 1 fois sur 50 où le \"...\" est le dernier mot de plus de 3 caractères de la phrase (en excluant les mots en -er, -ez et -ir)\n"
 	            			+ "Répondre à \"C'est pas faux\"\n"
+	            			+ "Répondre à \"mécréant\"\n"
+	            			+ "Répondre à \"humain\"\n"
 	            			+ "Détecter les mots grossiers \"con\", \"fuck\" et \"merde\"\n"
 	            			+ "Répondre quand on parle de lui, répond à un merci qui lui est adressé\n"
-	            			+ "Répond si on inverse le T et le H en début de Cthulhu\n"
+	            			+ "Répondre si on inverse le T et le H en début de Cthulhu\n"
 	            			+ "Répondre à un \"bonne nuit\"\n"
 	            			+ "Se tait 15 minutes lors d'un \"Silence Cthulhu\"\n"
 	            			+ "Se vexe 15 minutes lors d'un \"Ta gueule Cthulhu\"\n"
-	            			+ "Répond à \"mécréant\"\n"
 	            			+ "Fonctionnalité livre d'or (tapez \"!helplivredor\" pour plus d'informations)").queue();
 	            }
 	            
