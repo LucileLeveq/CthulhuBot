@@ -28,11 +28,17 @@ public class KaamelottListener implements EventListener {
             	
             	// Liste des mots à matcher
 	            Pattern mecreant = Pattern.compile("[Mm]écréant"); 
+	            Pattern pasfaux = Pattern.compile("[Cc]'est pas faux");
 	            
 	            // Réactions en fonction du match
 	            Matcher m = mecreant.matcher(message);
 	            if (m.find( )) {
 	            	e.getChannel().sendMessage("https://www.youtube.com/watch?v=RNYOhWOPHS8").queue();
+	            }
+	            
+	            m = pasfaux.matcher(message);
+	            if (m.find()) {
+	            	e.getChannel().sendMessage("Qu'est-ce que t'as pas compris ?").queue();
 	            }
             }
 		}

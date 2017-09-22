@@ -184,7 +184,7 @@ public class PoliteListener implements EventListener {
 		            		randomAnswer = "La médiocrité de ces humains m'affligera toujours... on dit C**th**ulhu.";
 		            		break;
 		            	case 2 :
-		            		randomAnswer = "REPENS-TOI POUR CETTE INJURE A MON AUGUSTE NOM MISERABLE CLOPORTE !! On dit C**th**lhu !";
+		            		randomAnswer = "REPENS-TOI POUR CETTE INJURE A MON AUGUSTE NOM MISERABLE CLOPORTE !! On dit C**th**ulhu !";
 		            		break;
 		            	default :
 		            		randomAnswer = "Ca s'écrit Cthulhu.";

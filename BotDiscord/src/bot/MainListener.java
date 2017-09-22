@@ -42,7 +42,6 @@ public class MainListener implements EventListener {
 	            Pattern allemand = Pattern.compile("^[Dd]ie | [Dd]ie |[Kk]artoffeln?|schön| [Dd]er |^[dD]er | [Dd]as |^[dD]as |danke|guten?|nacht| ich |^[iI]ch | bin | ein |^[Ee]in ");
 	            Pattern degueu = Pattern.compile("[Dd][Eeé][Gg][uU][Ee][Uu]");
 	            Pattern toimeme = Pattern.compile("^.* ([A-Za-zéêèôîïëüö]{4,}).*$");
-	            Pattern pasfaux = Pattern.compile("[Cc]'est pas faux");
 	            Pattern info = Pattern.compile("!info");
 	            Pattern help = Pattern.compile("!help");
 
@@ -124,11 +123,6 @@ public class MainListener implements EventListener {
 	            m = degueu.matcher(message);
 	            if (m.find( )) {
 	                e.getChannel().sendMessage("C'est toujours mieux qu'une pizza à l'ananas.").queue();
-	            }
-	            
-	            m = pasfaux.matcher(message);
-	            if (m.find()) {
-	            	e.getChannel().sendMessage("Qu'est-ce que t'as pas compris ?").queue();
 	            }
 	            
 	            m = info.matcher(message);
