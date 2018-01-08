@@ -67,7 +67,7 @@ public class LivredorListener implements EventListener {
             if (!bot){ //On ne répond que si c'est pas un bot
             	
             	Pattern livredor = Pattern.compile("!livredor");
-            	Pattern livredorauteur = Pattern.compile("auteur=([A-Za-zéêèôîïëüö]*)$");
+            	Pattern livredorauteur = Pattern.compile("auteur=(.*)$");
             	Pattern livredorhelp = Pattern.compile("!helplivredor");
             	
             	Matcher m = livredor.matcher(message);
