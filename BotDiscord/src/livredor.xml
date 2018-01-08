@@ -114,12 +114,6 @@
 			<auteur>Claire</auteur>
 			<date>Août 2016</date>
 		</citation>
-		<citation type="monologue">
-			<replique>T’as mon front sur la joue en ce moment.</replique>
-			<auteur>Pierre</auteur>
-			<date>Août 2016</date>
-			<commentaire>sur Discord</commentaire>
-		</citation>
 		<citation type="dialogue">
 			<replique>A ton avis, c’est quoi les canons de beauté lesbiens ? - Sans doute les mêmes que ceux des mecs qui aiment les frites.</replique>
 			<auteur>Claire</auteur>
@@ -417,7 +411,7 @@
 		</citation>
 		<citation type="monologue">
 			<replique>Le vendredi du dimanche soir, c’est le pire vendredi.</replique>
-			<auteur>Romaine Lebouc</auteur>
+			<auteur>Romaine</auteur>
 			<date>Février 2017</date>
 		</citation>
 		<citation type="monologue">
@@ -573,5 +567,67 @@
 			<replique>Quand on tue quelqu’un, il est mort.</replique>
 			<auteur>L'autre Claire</auteur>
 			<date>Juillet 2017</date>
+		</citation>
+		<citation type="dialogue">
+			<replique>C’est un peu des bisous gras. - C’est un peu des bisous de la vie du coup ?</replique>
+			<auteur>Lucile</auteur>
+			<auteur>Tom</auteur>
+			<date>Septembre 2017</date>
+		</citation>
+		<citation type="monologue">
+			<replique>Des fois j’arrive à mal entendre ce que je pense.</replique>
+			<auteur>Bizuth</auteur>
+			<date>Octobre 2017</date>
+		</citation>
+		<citation type="monologue">
+			<replique>En fait j’ai lu, j’ai compris les mots, mais j’ai pas écouté ce que j’ai lu.</replique>
+			<auteur>Laura</auteur>
+			<date>Octobre 2017</date>
+		</citation>
+		<citation type="monologue">
+			<replique>J’ai survécu jusqu’à la mort !</replique>
+			<auteur>Claire</auteur>
+			<date>Octobre 2017</date>
+		</citation>
+		<citation type="monologue">
+			<replique>Ne pas déterrer les muffins !!</replique>
+			<auteur>Dimitri</auteur>
+			<date>Novembre 2017</date>
+		</citation>
+		<citation type="monologue">
+			<replique>Comment on fait un dé six ? Ca existe pas !</replique>
+			<auteur>Pierre</auteur>
+			<date>Novembre 2017</date>
+		</citation>
+		<citation type="dialogue">
+			<replique>Mais ! Tu dis que je t’écoute pas mais c’est toi qu’as pas fini ta phrase ! - Mais des fois je m’écoute pas non plus !</replique>
+			<auteur>Lucile</auteur>
+			<auteur>Claire</auteur>
+			<date>Novembre 2017</date>
+		</citation>
+		<citation type="monologue">
+			<replique>Priez pour les cons, ça leur fera les pieds.</replique>
+			<auteur>Pierre</auteur>
+			<date>Décembre 2017</date>
+		</citation>
+		<citation type="monologue">
+			<replique>Je fais pas complètement rien mais un peu quand même.</replique>
+			<auteur>Francesco</auteur>
+			<date>Novembre 2017</date>
+		</citation>
+		<citation type="monologue">
+			<replique>Ta main me tend les bras.</replique>
+			<auteur>Lena</auteur>
+			<date>Décembre 2017</date>
+		</citation>
+		<citation type="monologue">
+			<replique>Je veux pas me moucher dans une vulve !</replique>
+			<auteur>Claire</auteur>
+			<date>Décembre 2017</date>
+		</citation>
+		<citation type="monologue">
+			<replique>C’est évident ! C’est pour ça que j’avais pas compris !</replique>
+			<auteur>Emilie</auteur>
+			<date>Janvier 2018</date>
 		</citation>
 	</livredor>
