@@ -42,6 +42,7 @@ local.properties
 
 ## IntelliJ
 .idea/
+.compiled/
 
 # External tool builders
 .externalToolBuilders/
