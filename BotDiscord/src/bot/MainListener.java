@@ -9,14 +9,14 @@ import net.dv8tion.jda.core.events.*;
 import net.dv8tion.jda.core.events.message.*;
 import net.dv8tion.jda.core.hooks.EventListener;
 
-/* Fonctionnalités :
- * Repérer "perd(*)", "jeu(x)" et "game(s)"
- * Repérer l'Allemand
- * Répondre "Pong !" à un ping
- * Répondre "C'est toujours meilleur qu'une pizza à l'ananas." quand on capte "dégueulasse"
- * Répondre aléatoirement "Toi-même, 'spèce de ..." 1 fois sur 50 où le "..." est le dernier mot de plus de 3
- * caractètres de la phrase (en excluant les mots en -er, -ez et -ir)
- * Répondre à "Humain"
+/* FonctionnalitÃ©s :
+ * RepÃ©rer "perd(*)", "jeu(x)" et "game(s)"
+ * RepÃ©rer l'Allemand
+ * RÃ©pondre "Pong !" Ã  un ping
+ * RÃ©pondre "C'est toujours meilleur qu'une pizza Ã  l'ananas." quand on capte "dÃ©gueulasse"
+ * RÃ©pondre alÃ©atoirement "Toi-mÃªme, 'spÃ¨ce de ..." 1 fois sur 50 oÃ¹ le "..." est le dernier mot de plus de 3
+ * caractÃ¨res de la phrase (en excluant les mots en -er, -ez et -ir)
+ * RÃ©pondre Ã  "Humain"
  * Message d'accueil si !help
  * Liste des actions si !info
  * */
@@ -29,26 +29,26 @@ public class MainListener implements EventListener {
             MessageReceivedEvent e = (MessageReceivedEvent) event;
             User author = e.getAuthor();
             boolean bot = author.isBot(); 
-            String message = e.getMessage().getContent();
+            String message = e.getMessage().getContentDisplay();
             
-            if (!bot){ //On ne répond que si c'est pas un bot
+            if (!bot){ //On ne rÃ©pond que si c'est pas un bot
             	
             	Random r = new Random();
             	int random = r.nextInt(50);
             	
             	
-            	// Liste des mots à matcher
+            	// Liste des mots Ã  matcher
 	            Pattern ping = Pattern.compile("^[Pp][Ii][Nn][Gg][ ,.].*|^[Pp][Ii][Nn][Gg]$| [Pp][Ii][Nn][Gg][ ,.].*| [Pp][Ii][Nn][Gg]$");
 	            Pattern jeu = Pattern.compile(" [Jj][Ee][Uu][Xx]?[ .?!]| [Jj][Ee][Uu][Xx]?[.!?]?$|^[Jj][Ee][Uu][Xx]?[ .?!]|^[Jj][Ee][Uu][Xx]?[.?!]?$|[Gg][Aa][Mm][Ee][Ss]? |[Gg][Aa][Mm][Ee][Ss]?$|[Pp][Ee][Rr][Dd][UuRrSs]?");
-	            Pattern allemand = Pattern.compile("^[Dd]ie | [Dd]ie |[Kk]artoffeln?|schön| [Dd]er |^[dD]er | [Dd]as |^[dD]as |danke|guten?|nacht| ich |^[iI]ch | bin | ein |^[Ee]in ");
-	            Pattern degueu = Pattern.compile("[Dd][Eeé][Gg][uU][Ee][Uu]");
-	            Pattern toimeme = Pattern.compile("^.* ([A-Za-zéêèôîïëüö]{4,}).*$");
+	            Pattern allemand = Pattern.compile("^[Dd]ie | [Dd]ie |[Kk]artoffeln?|schÃ©n| [Dd]er |^[dD]er | [Dd]as |^[dD]as |danke|guten?|nacht| ich |^[iI]ch | bin | ein |^[Ee]in ");
+	            Pattern degueu = Pattern.compile("[Dd][EeÃ©][Gg][uU][Ee][Uu]");
+	            Pattern toimeme = Pattern.compile("^.* ([A-Za-zzÃ©ÃªÃ¨Ã´Ã®Ã¯Ã«Ã¼Ã¶]{4,}).*$");
 	            Pattern info = Pattern.compile("!info");
 	            Pattern help = Pattern.compile("!help");
 	            Pattern humain = Pattern.compile("([Hh]umain)");
 
 	            
-	            // Réactions en fonction du match
+	            // RÃ©actions en fonction du match
 	            Matcher m = ping.matcher(message);
 	            if (m.find( )) {
 	                e.getChannel().sendMessage("Pong !").queue();
@@ -57,18 +57,18 @@ public class MainListener implements EventListener {
 	            m = humain.matcher(message);
 	            if (m.find()) {
 	            	String hum = m.group(1);
-	            	e.getChannel().sendMessage("\""+hum+"\" ? Ah oui, cette race de créatures qui fait partie de mes esclaves !").queue();
+	            	e.getChannel().sendMessage("\""+hum+"\" ? Ah oui, cette race de crÃ©atures qui fait partie de mes esclaves !").queue();
 	            }
 	            
 	            if (random == 0){ // Une fois sur 50 on balance une connerie.
 	            	m = toimeme.matcher(message);
 	            	if (m.find()){
-	            		String wtf = "Toi-même, 'spèce d";
+	            		String wtf = "Toi-mÃªme, 'spÃ¨ce d";
 	            		String suite = m.group(1);
 			            Pattern verbe = Pattern.compile("[ei]r|ez$");
 			            m = verbe.matcher(suite);
 			            if (!m.find()){
-			            	Pattern voyelles = Pattern.compile("^[éêèîêûïüëöaeiouyAEIOUY]");
+			            	Pattern voyelles = Pattern.compile("^[Ã©ÃªÃ¨Ã®ÃªÃ»Ã¯Ã¼Ã«Ã¶aeiouyAEIOUY]");
 		            		m = voyelles.matcher(suite);
 		            		if (m.find()){
 		            			wtf = wtf + "'" + suite + " !";
@@ -107,7 +107,7 @@ public class MainListener implements EventListener {
 	            	random = r.nextInt(5);
 	            	switch (random) {
 		            	case 0 :
-		            		randomGerman = "Deutschland über alles !";
+		            		randomGerman = "Deutschland Ã¼ber alles !";
 		            		break;
 		            	case 1 :
 		            		randomGerman = "Ein Volk, ein Reich, ein Kartoffel !";
@@ -130,33 +130,33 @@ public class MainListener implements EventListener {
 	            
 	            m = degueu.matcher(message);
 	            if (m.find( )) {
-	                e.getChannel().sendMessage("C'est toujours mieux qu'une pizza à l'ananas.").queue();
+	                e.getChannel().sendMessage("C'est toujours mieux qu'une pizza Ã  l'ananas.").queue();
 	            }
 	            
 	            m = info.matcher(message);
 	            if (m.find()) {
-	            	e.getChannel().sendMessage("Fonctionnalités :\n"
-	            			+ "Repérer \"perd(*)\", \"jeu(x)\" et \"game(s)\"\n"
-	            			+ "Repérer l'Allemand\n"
-	            			+ "Répondre à un ping\n"
-	            			+ "Répondre à \"dégueulasse\"\n"
-	            			+ "Répondre aléatoirement \"Toi-même, 'spèce de ...\" 1 fois sur 50 où le \"...\" est le dernier mot de plus de 3 caractères de la phrase (en excluant les mots en -er, -ez et -ir)\n"
-	            			+ "Répondre à \"C'est pas faux\"\n"
-	            			+ "Répondre à \"mécréant\"\n"
-	            			+ "Répondre à \"humain\"\n"
-	            			+ "Détecter les mots grossiers \"con\", \"fuck\" et \"merde\"\n"
-	            			+ "Répondre quand on parle de lui, répond à un merci qui lui est adressé\n"
-	            			+ "Répondre si on inverse le T et le H en début de Cthulhu\n"
-	            			+ "Répondre à un \"bonne nuit\"\n"
+	            	e.getChannel().sendMessage("FonctionnalitÃ©s :\n"
+	            			+ "RepÃ©rer \"perd(*)\", \"jeu(x)\" et \"game(s)\"\n"
+	            			+ "RepÃ©rer l'Allemand\n"
+	            			+ "RÃ©pondre Ã  un ping\n"
+	            			+ "RÃ©pondre Ã  \"dÃ©gueulasse\"\n"
+	            			+ "RÃ©pondre alÃ©atoirement \"Toi-mÃªme, 'spÃ¨ce de ...\" 1 fois sur 50 oÃ¹ le \"...\" est le dernier mot de plus de 3 caractÃ¨res de la phrase (en excluant les mots en -er, -ez et -ir)\n"
+	            			+ "RÃ©pondre Ã  \"C'est pas faux\"\n"
+	            			+ "RÃ©pondre Ã  \"mÃ©crÃ©ant\"\n"
+	            			+ "RÃ©pondre Ã  \"humain\"\n"
+	            			+ "DÃ©tecter les mots grossiers \"con\", \"fuck\" et \"merde\"\n"
+	            			+ "RÃ©pondre quand on parle de lui, rÃ©pond Ã  un merci qui lui est adressÃ©\n"
+	            			+ "RÃ©pondre si on inverse le T et le H en dÃ©but de Cthulhu\n"
+	            			+ "RÃ©pondre Ã© un \"bonne nuit\"\n"
 	            			+ "Se tait 15 minutes lors d'un \"Silence Cthulhu\"\n"
 	            			+ "Se vexe 15 minutes lors d'un \"Ta gueule Cthulhu\"\n"
-	            			+ "Fonctionnalité livre d'or (tapez \"!helplivredor\" pour plus d'informations)").queue();
+	            			+ "FonctionnalitÃ© livre d'or (tapez \"!helplivredor\" pour plus d'informations)").queue();
 	            }
 	            
 	            m = help.matcher(message);
 	            if (m.find()) {
 	            	e.getChannel().sendMessage("Salut tout le monde ! Cthulhu est dans la place ! \n"
-	        				+ "Pour expérimenter mon option livre d'or, tapez \"!helplivredor\" \n"
+	        				+ "Pour expÃ©rimenter mon option livre d'or, tapez \"!helplivredor\" \n"
 	        				+ "Pour me faire taire, tapez \"Silence Cthulhu\"\n"
 	        				+ "Pour plus d'info tapez \"!info\"").queue();
 	            }

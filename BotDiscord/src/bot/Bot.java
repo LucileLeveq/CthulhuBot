@@ -26,44 +26,45 @@ public class Bot implements EventListener {
 	public void onEvent(Event event) {
 		if (event instanceof MessageReceivedEvent) {
 			MessageReceivedEvent e = (MessageReceivedEvent) event;
-			String message = e.getMessage().getContent();
+			String message = e.getMessage().getContentDisplay();
 			Pattern stopit = Pattern.compile("!stop");
 			Matcher m = stopit.matcher(message);
 			if (m.find()){ //Si le message contient "!stop"
-				jda.shutdown(); //On arrête le bot
+				jda.shutdown(); //On arrÃªte le bot
 				stop = true;
 			}
 		}
 	}
     
-	//Paramètre et lance le bot
-    public Bot (String token) {
+	//ParamÃ¨tre et lance le bot
+    private Bot (String token) {
         try {
         	
-        	jda = (JDA) new JDABuilder(AccountType.BOT).setToken(token) //Token passé en paramètre dans le main
-				.setBulkDeleteSplittingEnabled(false).buildBlocking();
+        	jda = new JDABuilder(AccountType.BOT).setToken(token) //Token passÃ© en paramÃ¨tre dans le main
+				.setBulkDeleteSplittingEnabled(false).build();
         	jda.addEventListener(this); //Ajout du listener de stop
-        	jda.addEventListener(new MainListener()); //Ajout du listener débile x)
+        	jda.addEventListener(new MainListener()); //Ajout du listener dÃ©bile x)
         	jda.addEventListener(new PoliteListener()); //Ajout du listener de politesse
         	jda.addEventListener(new LivredorListener()); //Ajout du listener livre d'or
         	jda.addEventListener(new KaamelottListener()); //Ajout du listener Kaamelott
-        } catch (IllegalArgumentException | LoginException | InterruptedException | RateLimitedException e) {
+        } catch (IllegalArgumentException | LoginException e) {
         	e.printStackTrace();
-        	System.out.println("Une erreur est survenue ; veuillez vérifier le token ou votre connection internet.");
+        	System.out.println("Une erreur est survenue ; veuillez vÃ©rifier le token ou votre connection internet.");
+        	System.out.println(token);
         	return;
         }
         
     	int i; //Nombre de channels sur lequel le bot est actif
-        System.out.println("Connecté comme : " + jda.getSelfUser().getName()); //Affichage du nom du bot
-        System.out.println("Le bot est autorisé sur " + (i = jda.getGuilds().size()) + " serveur" + (i > 1 ? "s" : "")); //Serveur(s)
+        System.out.println("ConnectÃ© comme : " + jda.getSelfUser().getName()); //Affichage du nom du bot
+        System.out.println("Le bot est autorisÃ© sur " + (i = jda.getGuilds().size()) + " serveur" + (i > 1 ? "s" : "")); //Serveur(s)
         
         List<TextChannel> chan = jda.getTextChannels();
         for (TextChannel c : chan){
-        	//System.out.println("Channel - Name:"+c.getName()+" ID:"+c.getId()); //Affiche tous les salons où il est présent (nom + ID)
+        	//System.out.println("Channel - Name:"+c.getName()+" ID:"+c.getId()); //Affiche tous les salons oÃ¹ il est prÃ©sent (nom + ID)
         	
         	if (c.getName().equals("general")) //Message de salutation sur general
         		c.sendMessage("Salut tout le monde ! Cthulhu est dans la place ! \n"
-        				+ "Pour expérimenter mon option livre d'or, tapez \"!helplivredor\" \n"
+        				+ "Pour expÃ©rimenter mon option livre d'or, tapez \"!helplivredor\" \n"
         				+ "Pour me faire taire, tapez \"Silence Cthulhu\"\n"
         				+ "Pour plus d'info tapez \"!info\"").queue();
         }
@@ -72,7 +73,7 @@ public class Bot implements EventListener {
             Scanner scanner = new Scanner(System.in); //Scanne la console
             String cmd = scanner.next(); //Retranscrit en string
             if (cmd.equalsIgnoreCase("stop")) { //Si = stop
-                jda.shutdown(); //On arrête le bot
+                jda.shutdown(); //On arrÃªte le bot
                 stop = true;
             }
             scanner.close(); //On ferme le scan

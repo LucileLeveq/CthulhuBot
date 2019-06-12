@@ -22,9 +22,9 @@ import net.dv8tion.jda.core.events.Event;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.EventListener;
 
-/* Fonctionnalités :
+/* FonctionnalitÃ©s :
  * Va chercher une citation dans le livre d'or au hasard
- * Explique comment ça marche
+ * Explique comment Ã§a marche
  * Va chercher une citation par auteur (TODO)
  * */
 
@@ -62,9 +62,9 @@ public class LivredorListener implements EventListener {
             MessageReceivedEvent e = (MessageReceivedEvent) event;
             User author = e.getAuthor();
             boolean bot = author.isBot(); 
-            String message = e.getMessage().getContent();
+            String message = e.getMessage().getContentDisplay();
             
-            if (!bot){ //On ne répond que si c'est pas un bot
+            if (!bot){ //On ne rï¿½pond que si c'est pas un bot
             	
             	Pattern livredor = Pattern.compile("!livredor");
             	Pattern livredorauteur = Pattern.compile("auteur=(.*)$");
@@ -82,26 +82,26 @@ public class LivredorListener implements EventListener {
 			            return;
 					}
 	        	   
-	        	   NodeList citations = document.getElementsByTagName("citation"); //Récupération de toutes les citations
+	        	   NodeList citations = document.getElementsByTagName("citation"); //RÃ©cupÃ©ration de toutes les citations
 	        	   Random r = new Random();
 	        	   int random;
 	        	   Element citation;
 	        	   
 	        	   m = livredorauteur.matcher(message);
 	        	   if (m.find()) { //Citations d'auteur particulier
-	        		   String dequi = m.group(1); //Récup' de l'auteur
+	        		   String dequi = m.group(1); //Rï¿½cup' de l'auteur
 	        		   
 	        		   List<Element> citationsde = new ArrayList<Element>();
 	        		   
 	        		   for (int i = 0; i < citations.getLength(); i++){ //Pour chaque citation
 	        			   Element c = (Element)citations.item(i);
 	        			   
-	        			   //Si l'auteur correspond on l'ajoute à la liste de citations potentielles à renvoyer
+	        			   //Si l'auteur correspond on l'ajoute ï¿½ la liste de citations potentielles Ã  renvoyer
 	        			   if (c.getElementsByTagName("auteur").item(0).getTextContent().equals(dequi)){
 	        				   citationsde.add(c);
 	        			   }
 	        			   
-	        			   if (c.getAttribute("type").equals("dialogue")){ //On vérifie les autres auteurs
+	        			   if (c.getAttribute("type").equals("dialogue")){ //On vÃ©rifie les autres auteurs
 	        				   if (c.getElementsByTagName("auteur").item(1).getTextContent().equals(dequi)){
 		        				   citationsde.add(c);
 		        			   }
@@ -124,7 +124,7 @@ public class LivredorListener implements EventListener {
             	if (m.find( )) {
             		e.getChannel().sendMessage("Livre d'or :\n"
 	            			+ "Tapez \"!livredor\" pour obtenir une citation au hasard\n"
-	            			+ "Tapez \"!livredor auteur=Prénom\" (n'oubliez pas la majuscule) pour obtenir une citation d'une personne en particulier\n"
+	            			+ "Tapez \"!livredor auteur=Prï¿½nom\" (n'oubliez pas la majuscule) pour obtenir une citation d'une personne en particulier\n"
 	            			+ "").queue();
             	}
             }

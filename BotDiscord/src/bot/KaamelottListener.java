@@ -8,12 +8,12 @@ import net.dv8tion.jda.core.events.Event;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.EventListener;
 
-/* Fonctionnalités :
- * Envoyer la vidéo de Bohort au mot "mécréant"
- * Répondre "Qu'est-ce que t'as pas compris ?" si "C'est pas faux"
+/* FonctionnalitÃ©s :
+ * Envoyer la vidÃ©o de Bohort au mot "mÃ©crÃ©ant"
+ * RÃ©pondre "Qu'est-ce que t'as pas compris ?" si "C'est pas faux"
  * */
 
-//TODO : https://github.com/sedmelluq/lavaplayer se servir de ça pour avoir juste l'audio
+//TODO : https://github.com/sedmelluq/lavaplayer se servir de Ã§a pour avoir juste l'audio
 
 public class KaamelottListener implements EventListener {
 	
@@ -23,15 +23,15 @@ public class KaamelottListener implements EventListener {
             MessageReceivedEvent e = (MessageReceivedEvent) event;
             User author = e.getAuthor();
             boolean bot = author.isBot(); 
-            String message = e.getMessage().getContent();
+            String message = e.getMessage().getContentDisplay();
             
-            if (!bot){ //On ne répond que si c'est pas un bot
+            if (!bot){ //On ne rÃ©pond que si c'est pas un bot
             	
-            	// Liste des mots à matcher
-	            Pattern mecreant = Pattern.compile("[Mm]écréant"); 
+            	// Liste des mots Ã  matcher
+	            Pattern mecreant = Pattern.compile("[Mm]Ã©crÃ©ant");
 	            Pattern pasfaux = Pattern.compile("[Cc]'est pas faux");
 	            
-	            // Réactions en fonction du match
+	            // RÃ©actions en fonction du match
 	            Matcher m = mecreant.matcher(message);
 	            if (m.find( )) {
 	            	e.getChannel().sendMessage("https://www.youtube.com/watch?v=RNYOhWOPHS8").queue();

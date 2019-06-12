@@ -9,12 +9,12 @@ import net.dv8tion.jda.core.events.Event;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.EventListener;
 
-/* Fonctionnalités :
- * Détecter les mots grossiers et répondre un truc marrant en conséquence
- * Répondre quand on parle de lui, répond à un merci
+/* FonctionnalitÃ©s :
+ * DÃ©tecter les mots grossiers et rÃ©pondre un truc marrant en consÃ©quence
+ * RÃ©pondre quand on parle de lui, rÃ©pond Ã  un merci
  * Se tait 15 minutes
- * Répondre à un "Bonne nuit"
- * Râle si on se trompe d'orthographe pour son nom
+ * RÃ©pondre Ã  un "Bonne nuit"
+ * RÃ¢le si on se trompe d'orthographe pour son nom
  * */
 public class PoliteListener implements EventListener {
 
@@ -27,16 +27,16 @@ public class PoliteListener implements EventListener {
             MessageReceivedEvent e = (MessageReceivedEvent) event;
             User author = e.getAuthor();
             boolean bot = author.isBot(); 
-            String message = e.getMessage().getContent();
+            String message = e.getMessage().getContentDisplay();
             
-            if (!bot){ //On ne répond que si c'est pas un bot
+            if (!bot){ //On ne rï¿½pond que si c'est pas un bot
             	Random r = new Random();
             	
             	if (compteMsgBn <= latenceBn) {
                 	compteMsgBn ++; //Nb de messages depuis le dernier "bonne nuit"
             	}
             	
-            	// Liste des mots à matcher
+            	// Liste des mots ï¿½ matcher
 	            Pattern merde = Pattern.compile("[Mm][Ee][Rr][Dd][Ee]"); 
 	            Pattern con = Pattern.compile(" [Cc]on[s.,]* | [Cc]on[s.!?]*$"); 
 	            Pattern cthulhu = Pattern.compile("[Cc]thulhu");
@@ -48,7 +48,7 @@ public class PoliteListener implements EventListener {
 	            Pattern tagueule = Pattern.compile("[Tt]a gueule [Cc]thulhu");
 	            Pattern nuit = Pattern.compile("[Bb]onne nuit");
 
-	            // Réactions en fonction du match
+	            // Rï¿½actions en fonction du match
 	            Matcher m = merde.matcher(message);
 	            if (m.find( )) {
 	            	String randomMotChatie;
@@ -84,15 +84,15 @@ public class PoliteListener implements EventListener {
 		            		randomMotChatie = "sympathisant de droite";
 		            		break;
 		            	default :
-		            		randomMotChatie = "bête";
+		            		randomMotChatie = "bï¿½te";
 	            	}	
-	                e.getChannel().sendMessage("C'est pas très gentil. On dit \""+randomMotChatie+"\".").queue();
+	                e.getChannel().sendMessage("C'est pas trï¿½s gentil. On dit \""+randomMotChatie+"\".").queue();
 	            }
 	            
 	            m = nuit.matcher(message);
 	            if (m.find()) {
-	            	System.out.println("Détection d'un bonne nuit, compteMsgBn="+compteMsgBn+" latenceBn="+latenceBn);
-	            	if (compteMsgBn > latenceBn){ //On regarde si on n'a pas réagi il y a peu
+	            	System.out.println("Dï¿½tection d'un bonne nuit, compteMsgBn="+compteMsgBn+" latenceBn="+latenceBn);
+	            	if (compteMsgBn > latenceBn){ //On regarde si on n'a pas rï¿½agi il y a peu
 	      	            compteMsgBn = 0;
 	            		if (author.getName().equals("AmyW")){
 		            		e.getChannel().sendMessage("Bonne nuit reine des marmottes !").queue();
@@ -138,12 +138,12 @@ public class PoliteListener implements EventListener {
 		            	} else {
 		            		m = tagueule.matcher(message);
 			            	if (m.find()) {
-			            		e.getChannel().sendMessage("Oui bon bah ça va, pas la peine d'être désagréable !").queue();
+			            		e.getChannel().sendMessage("Oui bon bah ï¿½a va, pas la peine d'ï¿½tre dï¿½sagrï¿½able !").queue();
 			            		e.getChannel().sendMessage("*boude*").queue();
 			            		try {
 									Thread.sleep(1000*60*15); //attendre 15 minutes
 								} catch (InterruptedException e1) {
-									System.out.println("Une erreur est survenue quand Cthulhu s'est mis à bouder.");
+									System.out.println("Une erreur est survenue quand Cthulhu s'est mis ï¿½ bouder.");
 									e1.printStackTrace();
 								}
 			            	} else {
@@ -154,7 +154,7 @@ public class PoliteListener implements EventListener {
 					            		randomAnswer = "On parle de moi ?";
 					            		break;
 					            	case 1 : 
-					            		randomAnswer = "Je suis là !";
+					            		randomAnswer = "Je suis lï¿½ !";
 					            		break;
 					            	case 2 :
 					            		randomAnswer = "J'aime le doux son de mon nom...";
@@ -179,16 +179,16 @@ public class PoliteListener implements EventListener {
 	            	int random = r.nextInt(3);
 	            	switch (random) {
 		            	case 0 :
-		            		randomAnswer = "On dit C**th**ulhu, 'spèce d'illettré d'humain.";
+		            		randomAnswer = "On dit C**th**ulhu, 'spï¿½ce d'illettrï¿½ d'humain.";
 		            		break;
 		            	case 1 : 
-		            		randomAnswer = "La médiocrité de ces humains m'affligera toujours... on dit C**th**ulhu.";
+		            		randomAnswer = "La mï¿½diocritï¿½ de ces humains m'affligera toujours... on dit C**th**ulhu.";
 		            		break;
 		            	case 2 :
 		            		randomAnswer = "REPENS-TOI POUR CETTE INJURE A MON AUGUSTE NOM MISERABLE CLOPORTE !! On dit C**th**ulhu !";
 		            		break;
 		            	default :
-		            		randomAnswer = "Ca s'écrit Cthulhu.";
+		            		randomAnswer = "Ca s'ï¿½crit Cthulhu.";
 	            	}	
 	                e.getChannel().sendMessage(randomAnswer).queue();
 	            }
