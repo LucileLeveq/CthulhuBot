@@ -29,7 +29,7 @@ public class MainListener implements EventListener {
             MessageReceivedEvent e = (MessageReceivedEvent) event;
             User author = e.getAuthor();
             boolean bot = author.isBot(); 
-            String message = e.getMessage().getContentDisplay();
+            String message = e.getMessage().getContent();
             
             if (!bot){ //On ne répond que si c'est pas un bot
             	

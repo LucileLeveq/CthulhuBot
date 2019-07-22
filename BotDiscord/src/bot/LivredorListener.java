@@ -62,7 +62,7 @@ public class LivredorListener implements EventListener {
             MessageReceivedEvent e = (MessageReceivedEvent) event;
             User author = e.getAuthor();
             boolean bot = author.isBot(); 
-            String message = e.getMessage().getContentDisplay();
+            String message = e.getMessage().getContent();
             
             if (!bot){ //On ne r�pond que si c'est pas un bot
             	
@@ -96,7 +96,7 @@ public class LivredorListener implements EventListener {
 	        		   for (int i = 0; i < citations.getLength(); i++){ //Pour chaque citation
 	        			   Element c = (Element)citations.item(i);
 	        			   
-	        			   //Si l'auteur correspond on l'ajoute � la liste de citations potentielles à renvoyer
+	        			   //Si l'auteur correspond on l'ajoute à la liste de citations potentielles à renvoyer
 	        			   if (c.getElementsByTagName("auteur").item(0).getTextContent().equals(dequi)){
 	        				   citationsde.add(c);
 	        			   }
@@ -124,7 +124,7 @@ public class LivredorListener implements EventListener {
             	if (m.find( )) {
             		e.getChannel().sendMessage("Livre d'or :\n"
 	            			+ "Tapez \"!livredor\" pour obtenir une citation au hasard\n"
-	            			+ "Tapez \"!livredor auteur=Pr�nom\" (n'oubliez pas la majuscule) pour obtenir une citation d'une personne en particulier\n"
+	            			+ "Tapez \"!livredor auteur=Prénom\" (n'oubliez pas la majuscule) pour obtenir une citation d'une personne en particulier\n"
 	            			+ "").queue();
             	}
             }

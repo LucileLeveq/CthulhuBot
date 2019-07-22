@@ -26,7 +26,7 @@ public class Bot implements EventListener {
 	public void onEvent(Event event) {
 		if (event instanceof MessageReceivedEvent) {
 			MessageReceivedEvent e = (MessageReceivedEvent) event;
-			String message = e.getMessage().getContentDisplay();
+			String message = e.getMessage().getContent();
 			Pattern stopit = Pattern.compile("!stop");
 			Matcher m = stopit.matcher(message);
 			if (m.find()){ //Si le message contient "!stop"
@@ -40,14 +40,14 @@ public class Bot implements EventListener {
     private Bot (String token) {
         try {
         	
-        	jda = new JDABuilder(AccountType.BOT).setToken(token) //Token passé en paramètre dans le main
-				.setBulkDeleteSplittingEnabled(false).build();
+        	jda = (JDA) new JDABuilder(AccountType.BOT).setToken(token) //Token passé en paramètre dans le main
+				.setBulkDeleteSplittingEnabled(false).buildBlocking();
         	jda.addEventListener(this); //Ajout du listener de stop
         	jda.addEventListener(new MainListener()); //Ajout du listener débile x)
         	jda.addEventListener(new PoliteListener()); //Ajout du listener de politesse
         	jda.addEventListener(new LivredorListener()); //Ajout du listener livre d'or
         	jda.addEventListener(new KaamelottListener()); //Ajout du listener Kaamelott
-        } catch (IllegalArgumentException | LoginException e) {
+        } catch (IllegalArgumentException | LoginException | InterruptedException | RateLimitedException e) {
         	e.printStackTrace();
         	System.out.println("Une erreur est survenue ; veuillez vérifier le token ou votre connection internet.");
         	System.out.println(token);
